@@ -250,10 +250,12 @@ def invoice_generator_assembly(request):
     challan_number = ChallanNumber.objects.get(id=1)
     works = Work.objects.all().order_by('code')
     hsc   = HSCNumber.objects.all()
+    company = MyCompany.objects.all()
     context = {
         'works'         : works, 
         'hsc'           : hsc,
-        'challan_number': challan_number
+        'challan_number': challan_number,
+        'a': company,
     }
     return render(request, 'invoice_assembly.html', context)
 
